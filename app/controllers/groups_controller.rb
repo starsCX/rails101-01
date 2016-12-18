@@ -19,7 +19,7 @@ def create
   @group = Group.new(group_params)
   @group.save
 
-redirect_to group_path
+redirect_to groups_path
 end
 
 def update
@@ -27,9 +27,20 @@ def update
 
   @group.update(group_params)
 
-  redirect_to group_path, notice: "Update Success"
+  redirect_to groups_path, notice: "Update Success"
 
 end
+
+def destroy
+  @group = Group.find(params[:id])
+  @group.destroy
+  flash[:alert] = "Group Deleted"
+  redirect_to groups_path
+end
+
+
+
+
 
 
     private
